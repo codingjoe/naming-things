@@ -133,7 +133,8 @@ timeout: int = 30
 ## Versioning
 
 It's simple: if your project does continuous releases, use [Semantic Versioning](https://semver.org/).
-If you are on a fixed release cycle, use date-based versioning like `YYYY.major.patch`. E.g., `2024.2.3` for the third patch of the second minor release in 2024.
+If you are on a fixed release cycle, use [calver](https://calver.org/) `YYYY.MINOR.MICRO`
+. E.g., `2024.2.3` for the third patch of the second minor release in 2024.
 
 Here's a diagram to help you decide:
 
