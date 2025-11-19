@@ -1,0 +1,39 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-symlinks
+      - id: debug-statements
+      - id: destroyed-symlinks
+      - id: end-of-file-fixer
+      - id: no-commit-to-branch
+        args: [--branch, main]
+      - id: detect-private-key
+  - repo: https://github.com/hukkin/mdformat
+    rev: 1.0.0
+    hooks:
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-config
+          - mdformat-beautysh
+          - mdformat-config
+          - mdformat-footnote
+          - mdformat-gfm
+          - mdformat-gfm-alerts
+          - mdformat-gofmt
+          - mdformat-ruff
+          - mdformat-web
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.20.0
+    hooks:
+      - id: yamlfmt
+  - repo: https://github.com/btford/write-good
+    rev: v1.0.8
+    hooks:
+      - id: write-good
+ci:
+  skip:
+    - no-commit-to-branch
