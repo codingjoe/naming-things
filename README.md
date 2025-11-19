@@ -141,7 +141,7 @@ timeout: int = 30
 
 **Don't use abbreviations!**
 
-Unless... therm are technical acronyms, that are universally known outside your team's domain, e.g., `HTML`, `URL`. Use them if they are more common than their unabbreviated counterparts.
+Unless... they are technical acronyms, that are universally known outside your team's domain, e.g., `HTML`, `URL`. Use them if they are more common than their unabbreviated counterparts.
 
 ### Do's
 
@@ -181,7 +181,7 @@ Unless... therm are technical acronyms, that are universally known outside your 
 - msg – use `message`
 - calc – use `calculate` or `calculation`
 - init – use `initialize` or `initialization`
-- temp – use `temporary` or `temperature`
+
 - var – use `variable`
 - obj – use `object`
 - func – use `function` or `method`
