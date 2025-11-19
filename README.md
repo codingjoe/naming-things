@@ -178,35 +178,20 @@ Unless... they are technical acronyms, that are universally known outside your t
 ### Don'ts
 
 - IP – could mean `Intellectual Property`, use `IPv4` or `IPv6`
-
 - temp – use `temporary` or `temperature`
-
 - addr – use `address`
-
 - num – use `number`
-
 - cnt – use `count`
-
 - cfg – use `config` or `configuration`
-
 - msg – use `message`
-
 - calc – use `calculate` or `calculation`
-
 - init – use `initialize` or `initialization`
-
 - var – use `variable`
-
 - obj – use `object`
-
 - func – use `function` or `method`
-
 - btn – use `button`
-
 - usr – use `user`
-
 - pwd – use `password`
-
 - db – use `database`
 
 ## Versioning
