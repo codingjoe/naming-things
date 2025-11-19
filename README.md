@@ -13,7 +13,7 @@ _Solving computer science second-hardest problem._
     - [Do's](#dos)
     - [Don'ts](#donts)
 - [Time](#time)
-  - [Evens – Points in time](#evens-%E2%80%93-points-in-time)
+  - [Events – Points in time](#events-%E2%80%93-points-in-time)
     - [Do's](#dos-1)
     - [Don'ts](#donts-1)
   - [Durations and intervals](#durations-and-intervals)
