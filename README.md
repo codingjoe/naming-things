@@ -66,7 +66,7 @@ class SportsCar(BaseCar):
 
 ### Functions
 
-Function represents an action a caller can perform. Use verbs or verb phrases E.g., `send()`, `calculate_total()`.
+Function represents an action a caller can perform. Use verbs or verb phrases. E.g., `send()`, `calculate_total()`.
 
 Function names must clearly communicate their external behavior, including side effects. E.g., `fetch_or_404()` makes it explicit that it may raise a 404 error.
 They must not expose internal implementation details. E.g., avoid `send_via_smtp()`; use `send()` instead.
