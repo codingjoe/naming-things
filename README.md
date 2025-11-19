@@ -7,6 +7,7 @@
 - [Abstraction](#abstraction)
 - [Time](#time)
 - [Abbreviations](#abbreviations)
+- [Utils & Helpers](#utils--helpers)
 - [Versioning](#versioning)
 
 <!-- mdformat-toc end -->
@@ -183,7 +184,7 @@ Unless... they are technical acronyms, that are universally known outside your t
 - pwd – use `password`
 - db – use `database`
 
-# Utils & Helpers
+## Utils & Helpers
 
 > **[Resterampe /ˈʁɛstɐˌʁampə/](https://en.wiktionary.org/wiki/Resterampe)**
 >
