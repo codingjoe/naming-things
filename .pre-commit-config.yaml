@@ -25,6 +25,7 @@ repos:
           - mdformat-gfm-alerts
           - mdformat-gofmt
           - mdformat-ruff
+          - mdformat-toc
           - mdformat-web
   - repo: https://github.com/google/yamlfmt
     rev: v0.20.0
@@ -37,3 +38,4 @@ repos:
 ci:
   skip:
     - no-commit-to-branch
+    - write-good
