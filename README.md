@@ -7,6 +7,7 @@
 - [Abstraction](#abstraction)
 - [Time](#time)
 - [Abbreviations](#abbreviations)
+- [Metrics, Measurements, and Units](#metrics-measurements-and-units)
 - [Versioning](#versioning)
 
 <!-- mdformat-toc end -->
@@ -182,6 +183,63 @@ Unless... they are technical acronyms, that are universally known outside your t
 - usr – use `user`
 - pwd – use `password`
 - db – use `database`
+
+## Metrics, Measurements, and Units
+
+### Units
+
+Add an explicit unit suffix to all measurements. Use [SI unit symbols](https://en.wikipedia.org/wiki/International_System_of_Units#Unit_symbols) for brevity.
+
+When persisting metrics consider using SI (metric) units instead of [freedom units](https://en.wiktionary.org/wiki/freedom_units) since they are SI based. You will have less conversion headaches down the road.
+
+#### Do's
+
+```python
+class WeatherReport:
+    temperature_celsius: float  # temperature in degrees Celsius
+    distance_km: float  # distance in kilometers
+    weight_kg: float  # weight in kilograms
+    speed_kmh: float  # speed in kilometers per hour
+    volume_liters: float  # volume in liters
+```
+
+#### Don'ts
+
+```python
+class WeatherReport:
+    temperature: float  # ambiguous
+    distance: float  # ambiguous
+    weight: float  # ambiguous
+    speed: float  # ambiguous
+    volume: float  # ambiguous
+```
+
+### Sizes
+
+Always be explicit about sizes. Size matters! Do you know the size of a BIGINT or a SMALLINT in your database of choice?
+
+#### Do's
+
+```python
+from PIL import Image
+
+
+class Profile:
+    picture_w1200: Image  # if width is 1200 pixels and height is variable
+    picture_w400_h300: Image  # if width is 400 pixels and height is 300 pixels
+```
+
+#### Don'ts
+
+```python
+from PIL import Image
+
+
+class Profile:
+    picture_small: Image  # ambiguous
+    picture_large: Image  # ambiguous
+    picture_thumbnail: Image  # ambiguous
+```
 
 ## Versioning
 
