@@ -31,7 +31,7 @@ This document concerns natural language conventions, not syntax or code style. R
 
 Class names are nouns or noun phrases. Think German compound nouns. E.g., `UserProfile`, `OrderItem`, `PaymentProcessor`.
 
-Class names are singular because while its instances may represent multiple entities (e.g., a `User` class representing multiple instances users), the class itself is a blueprint for a single entity.
+Class names are singular because while its instances may represent multiple entities (e.g., a `User` class representing multiple user instances), the class itself is a blueprint for a single entity.
 
 #### Inheritance
 
@@ -66,16 +66,16 @@ class SportsCar(BaseCar):
 
 ### Functions
 
-Function represent an action a caller can perform. Use verbs or verb phrases E.g., `send()`, `calculate_total()`.
+Function represents an action a caller can perform. Use verbs or verb phrases E.g., `send()`, `calculate_total()`.
 
 Function names must clearly communicate their external behavior, including side effects. E.g., `fetch_or_404()` makes it explicit that it may raise a 404 error.
 They must not expose internal implementation details. E.g., avoid `send_via_smtp()`; use `send()` instead.
 
-Loose functions should be the exception, not the rule. Prefer class methods or instance methods to group related functionality. If a function includes an noun in its name, it probably belongs to that noun's class. E.g., instead of `fetch_user_profile(user_id)`, implement `UserProfile.fetch(user_id)`.
+Loose functions should be the exception, not the rule. Prefer class methods or instance methods to group related functionality. If a function includes a noun in its name, it probably belongs to that noun's class. E.g., instead of `fetch_user_profile(user_id)`, implement `UserProfile.fetch(user_id)`.
 
 ### Methods
 
-Avoid including object names, as the method is probably attached to wrong class. E.g., instead of `user.send_email()`, use `UserEmail(user).send()`.
+Avoid including object names, as the method is probably attached to the wrong class. E.g., instead of `user.send_email()`, use `UserEmail(user).send()`.
 
 ## Time
 
