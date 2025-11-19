@@ -30,6 +30,9 @@
 
 This document concerns natural language conventions not syntax or code style. Rules are language-agnostic, but examples are given in Python.
 
+[![Permanence
+](https://imgs.xkcd.com/comics/permanence.png)](https://xkcd.com/910/)
+
 ## Abstraction
 
 ### Inheritance
@@ -138,6 +141,8 @@ timeout: int = 30
 > Abbreviations rely on context you may or may not have.
 >
 > — [CodeAesthetic](https://www.youtube.com/watch?v=-J3wNP6u5YU)
+
+[![Nomenclature](https://imgs.xkcd.com/comics/nomenclature.png)](https://xkcd.com/1221/)
 
 **Don't use abbreviations!**
 
