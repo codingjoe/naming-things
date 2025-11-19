@@ -15,6 +15,7 @@
   - [Durations and intervals](#durations-and-intervals)
     - [Do's](#dos-2)
     - [Don'ts](#donts-2)
+- [Versioning](#versioning)
 
 <!-- mdformat-toc end -->
 
@@ -24,7 +25,7 @@
 >
 > — Phil Karlton
 
-This document concerns natural language conversions not syntax or code style. It is language-agnostic, but examples are given in Python.
+This document concerns natural language conventions not syntax or code style. Rules are language-agnostic, but examples are given in Python.
 
 ## Abstraction
 
@@ -128,6 +129,23 @@ timeout_ms: int = 30000
 # no interval specific type or unit
 timeout: int = 30
 ```
+
+## Versioning
+
+It's simple: if your project does continuous releases, use [Semantic Versioning](https://semver.org/).
+If you are on a fixed release cycle, use [calver](https://calver.org/) `YYYY.MINOR.MICRO`
+. E.g., `2024.2.3` for the third patch of the second minor release in 2024.
+
+Here's a diagram to help you decide:
+
+```mermaid
+flowchart TD
+    A(Start) --> B{releases}
+    B -- continuous --> D[semver]
+    B -- fixed cycle --> C[calver]
+```
+
+Do not invent your own versioning scheme.
 
 # Honorable mentions
 
