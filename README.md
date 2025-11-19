@@ -8,6 +8,7 @@
 - [Time](#time)
 - [Abbreviations](#abbreviations)
 - [Metrics, Measurements, and Units](#metrics-measurements-and-units)
+- [Utils & Helpers](#utils--helpers)
 - [Versioning](#versioning)
 
 <!-- mdformat-toc end -->
@@ -240,6 +241,19 @@ class Profile:
     picture_large: Image  # ambiguous
     picture_thumbnail: Image  # ambiguous
 ```
+
+## Utils & Helpers
+
+> **[Resterampe /ˈʁɛstɐˌʁampə/](https://en.wiktionary.org/wiki/Resterampe)**
+>
+> A German term for a place where leftover goods are collected and sold cheaply.
+
+Avoid generic names like `utils`, `helpers`, `common`, `shared`, `lib`, `core`, `base`, `foundation`, `services`, `components`, etc.
+
+For type agnostic functions use inheritance and class methods to group them meaningfully.
+E.g., instead of a `utils` module with a function `to_json(obj)`, implement a `Object.to_json(self)` method on relevant classes.
+
+If there isn't a type yet, create one. E.g., instead of a `helpers` module with a function `send_email(to, subject, body)`, create an `EmailClient` class with a `send_email(self, to, subject, body)` method.
 
 ## Versioning
 
