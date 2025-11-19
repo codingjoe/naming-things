@@ -1,10 +1,6 @@
-# "Naming Things"
+# _Naming Things_
 
-_Solving computer science second-hardest problem._
-
-> There are only two hard things in Computer Science: cache invalidation and naming things.
->
-> — Phil Karlton
+**A humble effort to solve computer science second-hardest problem.**
 
 <!-- mdformat-toc start --slug=github --no-anchors --maxlevel=4 --minlevel=2 -->
 
@@ -19,12 +15,16 @@ _Solving computer science second-hardest problem._
   - [Durations and intervals](#durations-and-intervals)
     - [Do's](#dos-2)
     - [Don'ts](#donts-2)
-- [Honorable mentions](#honorable-mentions)
 
 <!-- mdformat-toc end -->
 
-> [!NOTE]
-> This document concerns natural language conversions not syntax or code style.
+# Preamble
+
+> There are only two hard things in Computer Science: cache invalidation and naming things.
+>
+> — Phil Karlton
+
+This document concerns natural language conversions not syntax or code style. It is language-agnostic, but examples are given in Python.
 
 ## Abstraction
 
@@ -129,6 +129,11 @@ timeout_ms: int = 30000
 timeout: int = 30
 ```
 
-## Honorable mentions
+# Honorable mentions
 
 - [Naming Things in Code](https://www.youtube.com/watch?v=-J3wNP6u5YU) by CodeAesthetic
+
+# License
+
+This work is licensed under a [CC0 1.0 Universal License](https://creativecommons.org/publicdomain/zero/1.0/).
+Do with it as you please, maybe leave a star on [GitHub](https://github.com/codingjoe/naming-things). Thanks \<3
