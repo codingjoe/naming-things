@@ -191,17 +191,17 @@ Unless... they are technical acronyms, that are universally known outside your t
 
 Add an explicit unit suffix to all measurements. Use [SI unit symbols](https://en.wikipedia.org/wiki/International_System_of_Units#Unit_symbols) for brevity.
 
-When persisting metrics consider using SI (metric) units instead of [freedom units](https://en.wiktionary.org/wiki/freedom_units) since they are SI based. You will have less conversion headaches down the road.
+When persisting metrics, consider using SI (metric) units instead of [freedom units](https://en.wiktionary.org/wiki/freedom_units), as they are the international standard and simplify conversions. You will have less conversion headaches down the road.
 
 #### Do's
 
 ```python
 class WeatherReport:
-    temperature_celsius: float  # temperature in degrees Celsius
+    temperature_c: float  # temperature in degrees Celsius
     distance_km: float  # distance in kilometers
     weight_kg: float  # weight in kilograms
     speed_kmh: float  # speed in kilometers per hour
-    volume_liters: float  # volume in liters
+    volume_l: float  # volume in liters
 ```
 
 #### Don'ts
