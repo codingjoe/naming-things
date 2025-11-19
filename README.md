@@ -15,6 +15,9 @@
   - [Durations and intervals](#durations-and-intervals)
     - [Do's](#dos-2)
     - [Don'ts](#donts-2)
+- [Abbreviations](#abbreviations)
+  - [Do's](#dos-3)
+  - [Don'ts](#donts-3)
 - [Versioning](#versioning)
 
 <!-- mdformat-toc end -->
@@ -129,6 +132,63 @@ timeout_ms: int = 30000
 # no interval specific type or unit
 timeout: int = 30
 ```
+
+## Abbreviations
+
+> Abbreviations rely on context you may or may not have.
+>
+> — [CodeAesthetic](https://www.youtube.com/watch?v=-J3wNP6u5YU)
+
+**Don't use abbreviations!**
+
+Unless... therm are technical acronyms, that are universally known outside your team's domain, e.g., `HTML`, `URL`. Use them if they are more common than their unabbreviated counterparts.
+
+### Do's
+
+- **HTML** (HyperText Markup Language)
+- **URL** (Uniform Resource Locator)
+- **URI** (Uniform Resource Identifier)
+- **CPU** (Central Processing Unit)
+- **GPU** (Graphics Processing Unit)
+- **RAM** (Random Access Memory)
+- **JSON** (JavaScript Object Notation)
+- **XML** (eXtensible Markup Language)
+- **HTTP** (HyperText Transfer Protocol)
+- **HTTPS** (HyperText Transfer Protocol Secure)
+- **FTP** (File Transfer Protocol)
+- **SMTP** (Simple Mail Transfer Protocol)
+- **DNS** (Domain Name System)
+- **TLS** (Transport Layer Security)
+- **SSL** (Secure Sockets Layer)
+- **TCP** (Transmission Control Protocol)
+- **UDP** (User Datagram Protocol)
+- **SQL** (Structured Query Language)
+- **API** (Application Programming Interface)
+- **GUI** (Graphical User Interface)
+- **IDE** (Integrated Development Environment)
+- **OS** (Operating System)
+- **IPV4** (Internet Protocol Version 4)
+- **IPV6** (Internet Protocol Version 6)
+
+### Don'ts
+
+- IP – could mean `Intellectual Property`, use `IPv4` or `IPv6`
+- temp – use `temporary` or `temperature`
+- addr – use `address`
+- num – use `number`
+- cnt – use `count`
+- cfg – use `config` or `configuration`
+- msg – use `message`
+- calc – use `calculate` or `calculation`
+- init – use `initialize` or `initialization`
+- temp – use `temporary` or `temperature`
+- var – use `variable`
+- obj – use `object`
+- func – use `function` or `method`
+- btn – use `button`
+- usr – use `user`
+- pwd – use `password`
+- db – use `database`
 
 ## Versioning
 
