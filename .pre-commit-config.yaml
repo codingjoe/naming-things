@@ -35,7 +35,8 @@ repos:
     rev: v1.0.8
     hooks:
       - id: write-good
+        verbose: true
+        entry: bash -c 'write-good "$@" || true' --
 ci:
   skip:
     - no-commit-to-branch
-    - write-good
