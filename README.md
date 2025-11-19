@@ -141,8 +141,8 @@ Here's a diagram to help you decide:
 ```mermaid
 flowchart TD
     A(Start) --> B{releases}
-    B -- fixed cycle --> C[YYYY.major.patch]
     B -- continuous --> D[semver]
+    B -- fixed cycle --> C[calver]
 ```
 
 Do not invent your own versioning scheme.
