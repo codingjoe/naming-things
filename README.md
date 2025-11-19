@@ -1,6 +1,6 @@
 # _Naming Things_
 
-**A humble effort to solve computer science second-hardest problem.**
+**A humble effort to solve computer science's second-hardest problem.**
 
 <!-- mdformat-toc start --slug=github --no-anchors --maxlevel=2 --minlevel=2 -->
 
@@ -19,7 +19,7 @@
 >
 > — Phil Karlton
 
-This document concerns natural language conventions not syntax or code style. Rules are language-agnostic, but examples are given in Python.
+This document concerns natural language conventions, not syntax or code style. Rules are language-agnostic, but examples are given in Python.
 
 [![Permanence
 ](https://imgs.xkcd.com/comics/permanence.png)](https://xkcd.com/910/)
@@ -59,15 +59,15 @@ class SportsCar(BaseCar):
 
 ## Time
 
-_[Timezones are hard](https://www.youtube.com/watch?v=-5wpm-gesOY), don't make it harder._
+_[Time zones are hard](https://www.youtube.com/watch?v=-5wpm-gesOY); don't make it harder._
 
-### Events – Points in time
+### Events & Points in Time
 
 Points in time should always have a little `at`-suffix to communicate they represent a specific moment rather than a duration or interval.
 
 Furthermore, they must be in the language's date type (e.g., `datetime` in Python, `Date` in JavaScript) as well as timezone-aware.
 
-Hindsight is 20/20, name all dates in the past tense, e.g., `created_at`, `updated_at`, `deleted_at`. Even if the event is in the future, e.g., `scheduled_at`, `expired_at`, `started_at`. Time passes. By the time you are debugging code, everything is in the past.
+Hindsight is 20/20; name all dates in the past tense, e.g., `created_at`, `updated_at`, `deleted_at`. Even if the event is in the future, e.g., `scheduled_at`, `expired_at`, `started_at`. Time passes. By the time you are debugging code, everything is in the past.
 
 Avoid locale-specific string representations or include a timezone suffix. Suffix dates according to their [IANA timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
@@ -106,7 +106,7 @@ created_at: datetime.datetime = datetime.datetime.now()
 
 ### Durations and intervals
 
-Durations should be either be unambiguously typed (e.g., `timedelta` in Python, `Duration` in Java) or have a suffix indicating the unit of time (e.g., `secs`, `ms`, `mins`, `hours`, `days`).
+Durations should be either unambiguously typed (e.g., `timedelta` in Python, `Duration` in Java) or have a suffix indicating the unit of time (e.g., `secs`, `ms`, `mins`, `hours`, `days`).
 
 #### Do's
 
@@ -137,7 +137,7 @@ timeout: int = 30
 
 **Don't use abbreviations!**
 
-Unless... they are technical acronyms, that are universally known outside your team's domain, e.g., `HTML`, `URL`. Use them if they are more common than their unabbreviated counterparts.
+Unless… they are technical acronyms that are universally known outside your team's domain, e.g., `HTML`, `URL`. Use them if they are more common than their unabbreviated counterparts.
 
 ### Do's
 
@@ -163,8 +163,8 @@ Unless... they are technical acronyms, that are universally known outside your t
 - **GUI** (Graphical User Interface)
 - **IDE** (Integrated Development Environment)
 - **OS** (Operating System)
-- **IPV4** (Internet Protocol Version 4)
-- **IPV6** (Internet Protocol Version 6)
+- **IPv4** (Internet Protocol Version 4)
+- **IPv6** (Internet Protocol Version 6)
 
 ### Don'ts
 
@@ -250,7 +250,7 @@ class Profile:
 
 Avoid generic names like `utils`, `helpers`, `common`, `shared`, `lib`, `core`, `base`, `foundation`, `services`, `components`, etc.
 
-For type agnostic functions use inheritance and class methods to group them meaningfully.
+For type-agnostic functions, use inheritance and class methods to group them meaningfully.
 E.g., instead of a `utils` module with a function `to_json(obj)`, implement a `Object.to_json(self)` method on relevant classes.
 
 If there isn't a type yet, create one. E.g., instead of a `helpers` module with a function `send_email(to, subject, body)`, create an `EmailClient` class with a `send_email(self, to, subject, body)` method.
@@ -279,4 +279,4 @@ Do not invent your own versioning scheme.
 # License
 
 This work is licensed under a [CC0 1.0 Universal License](https://creativecommons.org/publicdomain/zero/1.0/).
-Do with it as you please, maybe leave a star on [GitHub](https://github.com/codingjoe/naming-things). Thanks \<3
+Do with it as you please; maybe leave a star on [GitHub](https://github.com/codingjoe/naming-things). Thanks \<3
