@@ -2,22 +2,11 @@
 
 **A humble effort to solve computer science second-hardest problem.**
 
-<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=4 --minlevel=2 -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=2 --minlevel=2 -->
 
 - [Abstraction](#abstraction)
-  - [Inheritance](#inheritance)
-    - [Do's](#dos)
-    - [Don'ts](#donts)
 - [Time](#time)
-  - [Events – Points in time](#events-%E2%80%93-points-in-time)
-    - [Do's](#dos-1)
-    - [Don'ts](#donts-1)
-  - [Durations and intervals](#durations-and-intervals)
-    - [Do's](#dos-2)
-    - [Don'ts](#donts-2)
 - [Abbreviations](#abbreviations)
-  - [Do's](#dos-3)
-  - [Don'ts](#donts-3)
 - [Versioning](#versioning)
 
 <!-- mdformat-toc end -->
