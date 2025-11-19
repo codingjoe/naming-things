@@ -63,13 +63,13 @@ class SportsCar(BaseCar):
 
 _[Timezones are hard](https://www.youtube.com/watch?v=-5wpm-gesOY), don't make it harder._
 
-### Evens – Points in time
+### Events – Points in time
 
 Points in time should always have a little `at`-suffix to communicate they represent a specific moment rather than a duration or interval.
 
 Furthermore, they must be in the language's date type (e.g., `datetime` in Python, `Date` in JavaScript) as well as timezone-aware.
 
-Hindsight is 20/20, name all dates in the past tense, e.g., `created_at`, `updated_at`, `deleted_at`. Even if the event is in the future, e.g., `scheduled_at`, `expired_at`, `started_at`. Time passes. Buy the time you are debugging code, everything is in the past.
+Hindsight is 20/20, name all dates in the past tense, e.g., `created_at`, `updated_at`, `deleted_at`. Even if the event is in the future, e.g., `scheduled_at`, `expired_at`, `started_at`. Time passes. By the time you are debugging code, everything is in the past.
 
 Avoid locale-specific string representations or include a timezone suffix. Suffix dates according to their [IANA timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
@@ -103,7 +103,7 @@ start = datetime.datetime.now(tz=datetime.timezone.utc)
 created = datetime.datetime.now()
 
 # naive datetime
-created_at: datetime.date = datetime.date.today()
+created_at: datetime.datetime = datetime.datetime.now()
 ```
 
 ### Durations and intervals
