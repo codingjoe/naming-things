@@ -4,11 +4,12 @@
 
 <!-- mdformat-toc start --slug=github --no-anchors --maxlevel=2 --minlevel=2 -->
 
-- [Abstraction](#abstraction)
+- [Classes and Functions](#classes-and-functions)
 - [Time](#time)
 - [Abbreviations](#abbreviations)
 - [Metrics, Measurements, and Units](#metrics-measurements-and-units)
 - [Utils & Helpers](#utils--helpers)
+- [Synonyms](#synonyms)
 - [Versioning](#versioning)
 
 <!-- mdformat-toc end -->
@@ -24,14 +25,20 @@ This document concerns natural language conventions, not syntax or code style. R
 [![Permanence
 ](https://imgs.xkcd.com/comics/permanence.png)](https://xkcd.com/910/)
 
-## Abstraction
+## Classes and Functions
 
-### Inheritance
+### Classes
+
+Class names are nouns or noun phrases. Think German compound nouns. E.g., `UserProfile`, `OrderItem`, `PaymentProcessor`.
+
+Class names are singular because while its instances may represent multiple entities (e.g., a `User` class representing multiple instances users), the class itself is a blueprint for a single entity.
+
+#### Inheritance
 
 Specialize, don't generalize. If you feel the urge to name a base class `BaseSomething` or `AbstractSomething`, go the other way.
 Make children more specific, not parents more general.
 
-#### Do's
+##### Do's
 
 ```python
 class Vehicle:
@@ -46,7 +53,7 @@ class SUV(Car):
     """A pedestrian death machine."""
 ```
 
-#### Don'ts
+##### Don'ts
 
 ```python
 class BaseCar:
@@ -56,6 +63,19 @@ class BaseCar:
 class SportsCar(BaseCar):
     """Only fun in Germany."""
 ```
+
+### Functions
+
+Function represent an action a caller can perform. Use verbs or verb phrases E.g., `send()`, `calculate_total()`.
+
+Function names must clearly communicate their external behavior, including side effects. E.g., `fetch_or_404()` makes it explicit that it may raise a 404 error.
+They must not expose internal implementation details. E.g., avoid `send_via_smtp()`; use `send()` instead.
+
+Loose functions should be the exception, not the rule. Prefer class methods or instance methods to group related functionality. If a function includes an noun in its name, it probably belongs to that noun's class. E.g., instead of `fetch_user_profile(user_id)`, implement `UserProfile.fetch(user_id)`.
+
+### Methods
+
+Avoid including object names, as the method is probably attached to wrong class. E.g., instead of `user.send_email()`, use `UserEmail(user).send()`.
 
 ## Time
 
@@ -251,9 +271,59 @@ class Profile:
 Avoid generic names like `utils`, `helpers`, `common`, `shared`, `lib`, `core`, `base`, `foundation`, `services`, `components`, etc.
 
 For type-agnostic functions, use inheritance and class methods to group them meaningfully.
-E.g., instead of a `utils` module with a function `to_json(obj)`, implement a `Object.to_json(self)` method on relevant classes.
+E.g., instead of a `utils` module with a function `to_json(obj)`, create a `Object.to_json(self)` method on relevant classes.
 
 If there isn't a type yet, create one. E.g., instead of a `helpers` module with a function `send_email(to, subject, body)`, create an `EmailClient` class with a `send_email(self, to, subject, body)` method.
+
+## Synonyms
+
+Avoid synonyms to reduce cognitive load. Pick one term and stick with it throughout your codebase.
+
+Here's a non-exhaustive list of common synonyms and their preferred alternatives:
+
+| Avoid                          | Prefer    |
+| ------------------------------ | --------- |
+| fetch/retrieve                 | fetch     |
+| search/query/find              | search    |
+| get/load/access                | get       |
+| send/dispatch/transmit         | send      |
+| create/make/build              | create    |
+| delete/remove/destroy          | delete    |
+| update/modify/change           | update    |
+| calculate/compute/determine    | calculate |
+| item/thing/object              | item      |
+| data/info/information          | data      |
+| value/val/amount               | value     |
+| list/array/collection          | list      |
+| clean/sanitize/normalize       | clean     |
+| start/begin/initiate           | start     |
+| stop/end/terminate             | stop      |
+| many/multiple/numerous/several | multiple  |
+
+Be specific and avoid vague terms. E.g., instead of `number`, use `count`, `index`, `mean`, etc.
+
+Here's a non-exhaustive list of ambiguous terms and their preferred alternatives:
+
+| Avoid   | Prefer            |
+| ------- | ----------------- |
+| number  | count/index/mean  |
+| average | mean/median       |
+| amount  | sum/count/min/max |
+
+### Exceptions
+
+Some terms have contextual meanings and should be used explicitly in those contexts.
+
+#### Get vs. Fetch vs. Search
+
+- **Get**: Use for simple, synchronous access to data already in memory or readily available.
+- **Fetch**: Use for asynchronous or remote data retrieval, such as from a database or API.
+- **Search**: Use when querying data based on specific criteria or filters with an unknown result set including zero results.
+
+#### Set vs. Send
+
+- **Set**: Use for assigning values to variables, properties, or configurations.
+- **Send**: Use for transmitting data or messages over a network or between components. If HTTP is involved, always use the correct request method (e.g., `post()`, `put()`).
 
 ## Versioning
 
