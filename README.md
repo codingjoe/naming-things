@@ -4,10 +4,9 @@
 
 > [!TIP]
 > **Usage:**
-> Simply copy the following snippet into your AGENTS.md file.
+> Simply copy the following snippet into your `AGENTS.md` file.
 > 
 > ```markdown
-> # AGENTS.md
 > When writing code, you MUST ALWAYS follow the [naming-things](https://raw.githubusercontent.com/codingjoe/naming-things/refs/heads/main/README.md) guidlines.
 > ```
 
