@@ -2,6 +2,16 @@
 
 **A humble effort to solve computer science's second-hardest problem.**
 
+> [!TIP]
+> **Usage:**
+> Simply copy the following snippet into your AGENTS.md file.
+> 
+> ```markdown
+> # AGENTS.md
+> When writing code, you MUST ALWAYS follow the [naming-things](https://raw.githubusercontent.com/codingjoe/naming-things/refs/heads/main/README.md) guidlines.
+> ```
+
+
 <!-- mdformat-toc start --slug=github --no-anchors --maxlevel=2 --minlevel=2 -->
 
 - [Classes and Functions](#classes-and-functions)
