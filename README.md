@@ -5,15 +5,15 @@
 > [!TIP]
 > **Usage:**
 > Simply copy the following snippet into your `AGENTS.md` or `CONTRIBUTING.md` file.
-> 
+>
 > ```markdown
 > When writing code, you MUST ALWAYS follow the [naming-things](https://raw.githubusercontent.com/codingjoe/naming-things/refs/heads/main/README.md) guidelines.
 > ```
 
-
 <!-- mdformat-toc start --slug=github --no-anchors --maxlevel=2 --minlevel=2 -->
 
 - [Classes and Functions](#classes-and-functions)
+- [Unit Tests](#unit-tests)
 - [Time](#time)
 - [Abbreviations](#abbreviations)
 - [Metrics, Measurements, and Units](#metrics-measurements-and-units)
@@ -85,6 +85,87 @@ Loose functions should be the exception, not the rule. Prefer class methods or i
 ### Methods
 
 Avoid including object names, as the method is probably attached to the wrong class. E.g., instead of `user.send_email()`, use `UserEmail(user).send()`.
+
+### Variables
+
+Avoid assigning variables that are only used once. If a value is asserted immediately or returned in the next line without further access, use it inline.
+
+## Unit Tests
+
+Unit tests should match their API counterparts to be easily navigable and discoverable. A simple text search for a function or class must reveal both its implementation and tests quickly.
+
+Test names use double underscores to separate the function or class name from the scenario (e.g., `test_get_user__ok`, `test_get_user__raise_value_error`). Test classes are prefixed with `Test` in Python or wrapped in `describe` blocks in JavaScript. Test descriptions must use imperative mood and avoid redundant words like "should", "expect", or "it". Assertion messages must add meaningful context beyond the assertion itself or be omitted. In Node.js, use strict assertions by default with `import assert from "node:assert/strict"` for shorter function names and stricter equality checks.
+
+### Do's
+
+```python
+def get_user(user_id):
+    """Fetch user from database."""
+    ...
+
+
+class TestGetUser:  # prefix with Test
+    def test_get_user__ok(self):  # double underscore separates scenario
+        """Return user when found."""  # imperative mood
+        assert isinstance(get_user(1), User)  # inline single-use values
+
+    def test_get_user__raise_value_error(self):  # descriptive scenario name
+        """Raise ValueError when user ID is invalid."""  # meaningful context
+        with pytest.raises(ValueError):
+            get_user(-1)
+```
+
+```javascript
+import assert from "node:assert/strict"; // strict assertions by default
+
+function getUser(userId) {
+    // Fetch user from database
+}
+
+describe("getUser", () => { // wrap in describe block
+    test("ok", () => { // no "should", "expect", or "it"
+        assert(getUser(1) instanceof User); // inline single-use values
+    });
+
+    test("raise ValueError", () => { // descriptive scenario
+        assert.throws(() => getUser(-1), ValueError);
+    });
+});
+
+// assertion messages add context or are omitted
+assert.ok(user.age >= 18, "User must be adult to access premium features");
+assert.equal(user.name, "Alice"); // omit when self-explanatory
+```
+
+### Don'ts
+
+```python
+def test_validate_email(self):
+    """It should return True when email is valid."""  # avoid "should", "it"
+
+
+def test_validate_email(self):
+    """We expect True for valid emails."""  # avoid "expect"
+
+
+def test_create_user__ok(self):
+    """Return user instance."""
+    user = create_user("Alice")  # unnecessary variable
+    assert isinstance(user, User)
+```
+
+```javascript
+test("validateEmail", () => {
+    // It should return true when email is valid  // avoid "it", "should"
+});
+
+test("createUser__ok", () => {
+    const user = createUser("Alice"); // unnecessary variable
+    assert(user instanceof User);
+});
+
+assert.equal(user.name, "Alice", "user.name should equal Alice"); // repeats assertion
+```
 
 ## Time
 
