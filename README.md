@@ -86,226 +86,57 @@ Loose functions should be the exception, not the rule. Prefer class methods or i
 
 Avoid including object names, as the method is probably attached to the wrong class. E.g., instead of `user.send_email()`, use `UserEmail(user).send()`.
 
+### Variables
+
+Avoid assigning variables that are only used once. If a value is asserted immediately or returned in the next line without further access, use it inline.
+
 ## Unit Tests
 
 Unit tests should match their API counterparts to be easily navigable and discoverable. A simple text search for a function or class must reveal both its implementation and tests quickly.
 
-### Test Functions
-
-Test functions should be named after the function they test, with a descriptive suffix indicating the test scenario.
-
-#### Do's (Python/pytest)
+Test names use double underscores to separate the function or class name from the scenario (e.g., `test_get_user__ok`, `test_get_user__raise_value_error`). Test classes are prefixed with `Test` in Python or wrapped in `describe` blocks in JavaScript. Test descriptions must use imperative mood and avoid redundant words like "should", "expect", or "it". Assertion messages must add meaningful context beyond the assertion itself or be omitted. In Node.js, use strict assertions by default with `import assert from "node:assert/strict"` for shorter function names and stricter equality checks.
 
 ```python
-def get_user():
+def get_user(user_id):
     """Fetch user from database."""
     ...
 
 
-def test_get_user__ok():
-    """Return user when found."""
-    ...
+class TestGetUser:
+    """Test suite for get_user."""
 
+    def test_get_user__ok(self):
+        """Return user when found."""
+        assert isinstance(get_user(1), User)
 
-def test_get_user__raise_value_error():
-    """Raise ValueError when user ID is invalid."""
-    ...
+    def test_get_user__raise_value_error(self):
+        """Raise ValueError when user ID is invalid."""
+        with pytest.raises(ValueError):
+            get_user(-1)
 ```
 
-#### Do's (JavaScript/Node.js)
-
 ```javascript
-function getUser() {
+function getUser(userId) {
     // Fetch user from database
 }
 
-test("getUser__ok", () => {
-    // Return user when found
-});
+describe("getUser", () => {
+    test("ok", () => {
+        assert(getUser(1) instanceof User);
+    });
 
-test("getUser__raiseError", () => {
-    // Raise error when user ID is invalid
-});
-```
-
-### Test Classes
-
-Test classes should be named after the class they test with a `Test` prefix in Python or wrapped in a `describe` block in JavaScript.
-
-#### Do's (Python/pytest)
-
-```python
-class UserProfile:
-    """User profile model."""
-
-
-class TestUserProfile:
-    """Test suite for UserProfile."""
-
-    def test_create__ok(self):
-        """Create profile successfully."""
-        ...
-```
-
-#### Do's (JavaScript)
-
-```javascript
-class UserProfile {
-    // User profile model
-}
-
-describe("UserProfile", () => {
-    test("create__ok", () => {
-        // Create profile successfully
+    test("raiseError", () => {
+        assert.throws(() => getUser(-1), ValueError);
     });
 });
 ```
 
-### Test Descriptions
-
-Test descriptions (docstrings in Python, test strings in JavaScript) must use the imperative mood and avoid redundant words.
-
-#### Do's
-
-```python
-def test_validate_email__ok():
-    """Return True for valid email."""
-    ...
-
-
-def test_validate_email__raise_value_error():
-    """Raise ValueError for invalid email."""
-    ...
-```
-
 ```javascript
-test("validateEmail__ok", () => {
-    // Return true for valid email
-});
+import assert from "node:assert/strict";
 
-test("validateEmail__raiseError", () => {
-    // Raise error for invalid email
-});
-```
-
-#### Don'ts
-
-```python
-def test_validate_email():
-    """It should return True when email is valid."""  # avoid "should", "it"
-    ...
-
-
-def test_validate_email():
-    """We expect True for valid emails."""  # avoid "expect", "we"
-    ...
-```
-
-```javascript
-test("validateEmail", () => {
-    // It should return true when email is valid  // avoid "it", "should"
-});
-```
-
-### Assertion Messages
-
-Assertion messages must add meaningful context beyond what the assertion itself provides. Omit messages that merely repeat the assertion.
-
-#### Do's
-
-```python
-assert user.age >= 18, "User must be adult to access premium features"
-assert response.status_code == 200  # omit message when assertion is self-explanatory
-```
-
-```javascript
-assert.strictEqual(user.age >= 18, true, "User must be adult to access premium features");
-assert.strictEqual(response.statusCode, 200); // omit message when self-explanatory
-```
-
-#### Don'ts
-
-```python
-assert user.age >= 18, (
-    "user.age should be greater than or equal to 18"
-)  # repeats assertion
-assert response.status_code == 200, "Expected 200"  # adds no context
-```
-
-### Node.js Strict Assertions
-
-Use strict assertions from Node.js by default for shorter function names and stricter equality checks.
-
-#### Do's
-
-```javascript
-import {
-    strictEqual,
-    deepStrictEqual
-} from "node:assert/strict";
-
-strictEqual(user.name, "Alice");
-deepStrictEqual(user.roles, ["admin", "editor"]);
-```
-
-#### Don'ts
-
-```javascript
-import assert from "node:assert";
-
-assert.equal(user.name, "Alice"); // non-strict equality
-assert.deepEqual(user.roles, ["admin", "editor"]); // non-strict equality
-```
-
-### Variable Assignment in Tests
-
-Avoid assigning variable names to objects that are only used once, especially if they are asserted immediately or returned in the next line.
-
-#### Do's
-
-```python
-def test_create_user__ok():
-    """Return user instance."""
-    assert isinstance(create_user("Alice"), User)
-
-
-def test_get_total__ok():
-    """Return sum of prices."""
-    return calculate_total([10, 20, 30])
-```
-
-```javascript
-test("createUser__ok", () => {
-    // Return user instance
-    assert(createUser("Alice") instanceof User);
-});
-
-test("getTotal__ok", () => {
-    // Return sum of prices
-    return calculateTotal([10, 20, 30]);
-});
-```
-
-#### Don'ts
-
-```python
-def test_create_user__ok():
-    """Return user instance."""
-    user = create_user("Alice")  # unnecessary variable
-    assert isinstance(user, User)
-
-
-def test_get_total__ok():
-    """Return sum of prices."""
-    total = calculate_total([10, 20, 30])  # unnecessary variable
-    return total
-```
-
-```javascript
-test("createUser__ok", () => {
-    const user = createUser("Alice"); // unnecessary variable
-    assert(user instanceof User);
-});
+assert.equal(user.name, "Alice");
+assert.deepEqual(user.roles, ["admin", "editor"]);
+assert.ok(user.age >= 18, "User must be adult to access premium features");
 ```
 
 ## Time
