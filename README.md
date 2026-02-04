@@ -514,35 +514,35 @@ const noCache = true; // negative language
 
 When writing code or documentation, use these positive alternatives:
 
-| Avoid (Negative)       | Prefer (Positive)     |
-| ---------------------- | --------------------- |
-| disable_feature        | enable_feature        |
-| is_not_found           | is_found              |
-| is_not_ready           | is_ready              |
-| disallow_access        | allow_access          |
-| hide_element           | show_element          |
-| no_cache               | use_cache             |
-| without_authentication | with_authentication   |
-| lacks_permission       | has_permission        |
-| cannot_edit            | can_edit              |
-| should_not_process     | should_process        |
-| is_not_empty           | has_items             |
-| is_unavailable         | is_available          |
-| is_inactive            | is_active             |
-| is_incomplete          | is_complete           |
-| does_not_exist         | exists                |
-| is_forbidden           | is_allowed            |
-| is_denied              | is_granted            |
-| is_not_visible         | is_visible / is_shown |
-| prevent_access         | grant_access          |
-| block_requests         | accept_requests       |
-| reject_input           | accept_input          |
-| exclude_user           | include_user          |
-| ignore_warnings        | show_warnings         |
-| suppress_errors        | show_errors           |
-| is_not_supported       | is_supported          |
-| is_not_compatible      | is_compatible         |
-| is_not_available       | is_available          |
+| Avoid (Negative)       | Prefer (Positive)   |
+| ---------------------- | ------------------- |
+| disable_feature        | enable_feature      |
+| is_not_found           | is_found            |
+| is_not_ready           | is_ready            |
+| disallow_access        | allow_access        |
+| hide_element           | show_element        |
+| no_cache               | use_cache           |
+| without_authentication | with_authentication |
+| lacks_permission       | has_permission      |
+| cannot_edit            | can_edit            |
+| should_not_process     | should_process      |
+| is_not_empty           | is_populated        |
+| is_unavailable         | is_available        |
+| is_inactive            | is_active           |
+| is_incomplete          | is_complete         |
+| does_not_exist         | exists              |
+| is_forbidden           | is_allowed          |
+| is_denied              | is_granted          |
+| is_not_visible         | is_visible          |
+| prevent_access         | grant_access        |
+| block_requests         | accept_requests     |
+| reject_input           | accept_input        |
+| exclude_user           | include_user        |
+| ignore_warnings        | heed_warnings       |
+| suppress_errors        | report_errors       |
+| is_not_supported       | is_supported        |
+| is_not_compatible      | is_compatible       |
+| is_not_available       | is_available        |
 
 ### Exception: When Negation Is Acceptable
 
