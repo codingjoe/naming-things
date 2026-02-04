@@ -545,7 +545,6 @@ When writing code or documentation, use these positive alternatives:
 | is_not_supported       | is_supported          |
 | is_not_compatible      | is_compatible         |
 | is_not_available       | is_available          |
-| unset_flag             | set_flag              |
 
 ### Exception: When Negation Is Acceptable
 
