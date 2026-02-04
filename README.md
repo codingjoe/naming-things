@@ -517,8 +517,6 @@ When writing code or documentation, use these positive alternatives:
 | Avoid (Negative)       | Prefer (Positive)     |
 | ---------------------- | --------------------- |
 | disable_feature        | enable_feature        |
-| is_disabled            | is_enabled            |
-| is_invalid             | is_valid              |
 | is_not_found           | is_found              |
 | is_not_ready           | is_ready              |
 | disallow_access        | allow_access          |
@@ -556,7 +554,7 @@ Sometimes negative terms are the most natural expression of a concept. Use them 
 ```python
 # Acceptable negative terms when they are the standard
 class Button:
-    is_disabled = True  # standard UI term; enabled is default, disabled is the exception
+    is_disabled = True  # standard UI/accessibility term
 
 class ValidationResult:
     is_invalid = True  # standard validation term
