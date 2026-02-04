@@ -422,7 +422,8 @@ Some terms have contextual meanings and should be used explicitly in those conte
 
 ## Avoid Negations
 
-Use positive language to avoid double negations and improve readability. E.g., `if (is_enabled)` is clearer than `if (!is_disabled)`.
+Use positive language to avoid double negations and improve readability.
+E.g., `if (is_enabled)` is clearer than `if (!is_disabled)`.
 
 ### Do's
 
@@ -442,20 +443,26 @@ if not is_disabled:  # hard to parse
 
 ### Common Patterns
 
-| Avoid            | Prefer          |
-| ---------------- | --------------- |
-| disable_feature  | enable_feature  |
-| is_invalid       | is_valid        |
-| is_not_ready     | is_ready        |
-| lacks_permission | has_permission  |
-| cannot_edit      | can_edit        |
-| is_incomplete    | is_complete     |
-| does_not_exist   | exists          |
-| prevent_access   | grant_access    |
-| ignore_warnings  | handle_warnings |
-| is_not_supported | is_supported    |
+| Avoid          | Prefer    |
+| -------------- | --------- |
+| disable        | enable    |
+| invalid        | valid     |
+| incomplete     | complete  |
+| does_not_exist | exists    |
+| prevent        | grant     |
+| ignore         | handle    |
+| avoid          | allow     |
+| fail           | succeed   |
+| missing        | present   |
+| incorrect      | correct   |
+| unavailable    | available |
+| inactive       | active    |
+| prohibited     | permitted |
+| rejected       | accepted  |
+| denied         | granted   |
 
-**Exception**: Use negative terms when they're the standard (e.g., `is_disabled` for UI elements, `is_invalid` for validation) or inherently negative (e.g., `error`, `exception`).
+> [!NOTE]
+> Use negative terms when they're the standard (e.g., `disabled` for HTMLInputElements) or inherently negative (e.g., `error`, `exception`).
 
 ## Versioning
 
