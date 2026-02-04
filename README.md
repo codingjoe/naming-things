@@ -23,6 +23,7 @@
 - [Metrics, Measurements, and Units](#metrics-measurements-and-units)
 - [Utils & Helpers](#utils--helpers)
 - [Synonyms](#synonyms)
+- [Avoid Negations](#avoid-negations)
 - [Versioning](#versioning)
 
 <!-- mdformat-toc end -->
@@ -418,6 +419,154 @@ Some terms have contextual meanings and should be used explicitly in those conte
 
 - **Set**: Use for assigning values to variables, properties, or configurations.
 - **Send**: Use for transmitting data or messages over a network or between components. If HTTP is involved, always use the correct request method (e.g., `post()`, `put()`).
+
+## Avoid Negations
+
+Use positive language in naming to enhance code clarity and avoid cognitive overhead from double negations.
+
+### Why Positive Language Matters
+
+**Readability**: Positive terms are more straightforward and easier to understand at a glance.
+E.g., `if (is_enabled)` is clearer than `if (!is_disabled)`.
+
+**Double Negations**: Negative names create confusing logic when used with negative conditions.
+E.g., `if (!is_not_valid)` is much harder to parse than `if (is_valid)`.
+
+**Cognitive Load**: Our brains process positive statements faster than negative ones. Using positive language reduces mental effort when reading and reviewing code.
+
+**Consistency**: Positive naming encourages consistent boolean logic patterns across your codebase, making it easier for teams to collaborate.
+
+### Do's
+
+```python
+# Configuration flags
+enable_feature_x = False  # positive language
+allow_guest_access = True  # positive language
+show_preview = True  # positive language
+use_cache = False  # positive language
+
+# State checks
+is_active = True  # positive language
+is_valid = False  # positive language
+is_authenticated = True  # positive language
+has_permission = False  # positive language
+
+# Conditional logic
+if is_enabled:
+    activate()
+
+if has_access:
+    grant_permission()
+
+if is_complete:
+    finalize()
+```
+
+```javascript
+// Configuration flags
+const enableFeatureX = false; // positive language
+const allowGuestAccess = true; // positive language
+const showPreview = true; // positive language
+const useCache = false; // positive language
+
+// State checks
+const isActive = true; // positive language
+const isValid = false; // positive language
+const isAuthenticated = true; // positive language
+const hasPermission = false; // positive language
+```
+
+### Don'ts
+
+```python
+# Configuration flags
+disable_feature_x = True  # negative language creates confusion
+disallow_guest_access = False  # double negation: disallow=False means allow
+hide_preview = False  # double negation: hide=False means show
+no_cache = True  # negative language
+
+# State checks
+is_not_active = False  # double negation: not_active=False means active
+is_invalid = True  # negative language
+is_not_authenticated = False  # double negation
+lacks_permission = True  # negative language
+
+# Conditional logic - confusing patterns
+if not is_disabled:  # double negation
+    activate()
+
+if not lacks_access:  # double negation
+    grant_permission()
+
+if not is_incomplete:  # double negation
+    finalize()
+```
+
+```javascript
+// Configuration flags
+const disableFeatureX = true; // negative language creates confusion
+const disallowGuestAccess = false; // double negation
+const hidePreview = false; // double negation
+const noCache = true; // negative language
+```
+
+### Word Suggestions
+
+When writing code or documentation, use these positive alternatives:
+
+| Avoid (Negative)       | Prefer (Positive)     |
+| ---------------------- | --------------------- |
+| disable_feature        | enable_feature        |
+| is_disabled            | is_enabled            |
+| is_invalid             | is_valid              |
+| is_not_found           | is_found              |
+| is_not_ready           | is_ready              |
+| disallow_access        | allow_access          |
+| hide_element           | show_element          |
+| no_cache               | use_cache             |
+| without_authentication | with_authentication   |
+| lacks_permission       | has_permission        |
+| cannot_edit            | can_edit              |
+| should_not_process     | should_skip           |
+| is_not_empty           | is_empty / has_items  |
+| is_unavailable         | is_available          |
+| is_inactive            | is_active             |
+| is_incomplete          | is_complete           |
+| does_not_exist         | exists                |
+| is_forbidden           | is_allowed            |
+| is_denied              | is_granted            |
+| is_not_visible         | is_visible / is_shown |
+| prevent_access         | allow_access          |
+| block_requests         | allow_requests        |
+| reject_input           | accept_input          |
+| exclude_user           | include_user          |
+| ignore_warnings        | show_warnings         |
+| suppress_errors        | report_errors         |
+| is_not_supported       | is_supported          |
+| is_not_compatible      | is_compatible         |
+| is_not_available       | is_available          |
+| unset_flag             | set_flag              |
+
+### Exception: When Negation Is Acceptable
+
+Sometimes negative terms are the most natural expression of a concept. Use them when:
+
+1. The negative form is the standard industry term (e.g., `disabled` for UI elements, `invalid` for form validation)
+1. The positive alternative would be awkward or unclear (e.g., `is_optional` is clearer than `is_required = False`)
+1. The concept is inherently negative (e.g., `error`, `exception`, `failure`)
+
+```python
+# Acceptable negative terms when they are clearest
+class FormField:
+    is_optional = True  # clearer than requiring `is_required = False`
+    is_readonly = True  # standard term for form fields
+
+
+# Natural negative concepts
+def validate_email(email):
+    if not is_valid_format(email):
+        raise ValidationError("Invalid email format")  # natural term
+```
 
 ## Versioning
 
