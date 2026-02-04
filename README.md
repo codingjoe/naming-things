@@ -551,14 +551,15 @@ When writing code or documentation, use these positive alternatives:
 Sometimes negative terms are the most natural expression of a concept. Use them when:
 
 1. The negative form is the standard industry term (e.g., `disabled` for UI elements, `invalid` for form validation)
-1. The positive alternative would be awkward or unclear (e.g., `is_optional` is clearer than `is_required = False`)
 1. The concept is inherently negative (e.g., `error`, `exception`, `failure`)
 
 ```python
-# Acceptable negative terms when they are clearest
-class FormField:
-    is_optional = True  # clearer than requiring `is_required = False`
-    is_readonly = True  # standard term for form fields
+# Acceptable negative terms when they are the standard
+class Button:
+    is_disabled = True  # standard UI term; enabled is default, disabled is the exception
+
+class ValidationResult:
+    is_invalid = True  # standard validation term
 
 
 # Natural negative concepts
