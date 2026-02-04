@@ -526,7 +526,7 @@ When writing code or documentation, use these positive alternatives:
 | lacks_permission       | has_permission      |
 | cannot_edit            | can_edit            |
 | should_not_process     | should_process      |
-| is_not_empty           | is_populated        |
+| is_not_empty           | has_content         |
 | is_unavailable         | is_available        |
 | is_inactive            | is_active           |
 | is_incomplete          | is_complete         |
@@ -538,8 +538,8 @@ When writing code or documentation, use these positive alternatives:
 | block_requests         | accept_requests     |
 | reject_input           | accept_input        |
 | exclude_user           | include_user        |
-| ignore_warnings        | heed_warnings       |
-| suppress_errors        | report_errors       |
+| ignore_warnings        | handle_warnings     |
+| suppress_errors        | show_errors         |
 | is_not_supported       | is_supported        |
 | is_not_compatible      | is_compatible       |
 | is_not_available       | is_available        |
