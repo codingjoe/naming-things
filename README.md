@@ -534,12 +534,12 @@ When writing code or documentation, use these positive alternatives:
 | is_forbidden           | is_allowed            |
 | is_denied              | is_granted            |
 | is_not_visible         | is_visible / is_shown |
-| prevent_access         | allow_access          |
-| block_requests         | allow_requests        |
+| prevent_access         | grant_access          |
+| block_requests         | accept_requests       |
 | reject_input           | accept_input          |
 | exclude_user           | include_user          |
-| ignore_warnings        | process_warnings      |
-| suppress_errors        | report_errors         |
+| ignore_warnings        | show_warnings         |
+| suppress_errors        | show_errors           |
 | is_not_supported       | is_supported          |
 | is_not_compatible      | is_compatible         |
 | is_not_available       | is_available          |
