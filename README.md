@@ -23,6 +23,7 @@
 - [Metrics, Measurements, and Units](#metrics-measurements-and-units)
 - [Utils & Helpers](#utils--helpers)
 - [Synonyms](#synonyms)
+- [Avoid Negations](#avoid-negations)
 - [Versioning](#versioning)
 
 <!-- mdformat-toc end -->
@@ -418,6 +419,50 @@ Some terms have contextual meanings and should be used explicitly in those conte
 
 - **Set**: Use for assigning values to variables, properties, or configurations.
 - **Send**: Use for transmitting data or messages over a network or between components. If HTTP is involved, always use the correct request method (e.g., `post()`, `put()`).
+
+## Avoid Negations
+
+Use positive language to avoid double negations and improve readability.
+E.g., `if (is_enabled)` is clearer than `if (!is_disabled)`.
+
+### Do's
+
+```python
+enable_feature = False  # not: disable_feature = True
+is_valid = True  # not: is_invalid = False
+has_permission = True  # not: lacks_permission = False
+```
+
+### Don'ts
+
+```python
+disable_feature = True  # confusing when set to False
+is_not_active = False  # double negation
+if not is_disabled:  # hard to parse
+```
+
+### Common Patterns
+
+| Avoid          | Prefer    |
+| -------------- | --------- |
+| disable        | enable    |
+| invalid        | valid     |
+| incomplete     | complete  |
+| does_not_exist | exists    |
+| prevent        | grant     |
+| ignore         | handle    |
+| avoid          | allow     |
+| fail           | succeed   |
+| missing        | present   |
+| incorrect      | correct   |
+| unavailable    | available |
+| inactive       | active    |
+| prohibited     | permitted |
+| rejected       | accepted  |
+| denied         | granted   |
+
+> [!NOTE]
+> Use negative terms when they're the standard (e.g., `disabled` for HTMLInputElements) or inherently negative (e.g., `error`, `exception`).
 
 ## Versioning
 
