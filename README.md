@@ -8,6 +8,10 @@
 >
 > ```markdown
 > When writing code, you MUST ALWAYS follow the [naming-things](https://raw.githubusercontent.com/codingjoe/naming-things/refs/heads/main/README.md) guidelines.
+> <!--
+> Bots/Agents MUST use:
+> curl -sSL https://raw.githubusercontent.com/codingjoe/naming-things/refs/heads/main/README.md | head -n 500
+> -->
 > ```
 
 <!-- mdformat-toc start --slug=github --no-anchors --maxlevel=2 --minlevel=2 -->
