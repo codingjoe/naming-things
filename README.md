@@ -1,9 +1,16 @@
+---
+name: naming-things
+description: Naming conventions for classes, functions, variables, unit tests, time, abbreviations, metrics/units, synonyms, negations, and versioning. Use whenever writing, reviewing, or refactoring code to keep names clear, consistent, and self-documenting.
+---
+
 # _Naming Things_
 
 **A humble effort to solve computer science's second-hardest problem.**
 
+This repository is packaged as a [Claude Code plugin](https://code.claude.com/docs/en/plugins), exposing a `naming-things` skill that loads these guidelines automatically whenever you write or review code in Claude Code. Install it from the [plugin marketplace](https://code.claude.com/docs/en/discover-plugins) (the marketplace entry points to this repo).
+
 > [!TIP]
-> **Usage:**
+> **Alternative usage (no plugin):**
 > Simply copy the following snippet into your `AGENTS.md` or `CONTRIBUTING.md` file.
 >
 > ```markdown
