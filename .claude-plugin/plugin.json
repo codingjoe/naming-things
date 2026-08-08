@@ -1,7 +1,6 @@
 {
   "name": "naming-things",
   "description": "Naming conventions for classes, functions, variables, tests, time, abbreviations, units, and more. Use when writing or reviewing code to keep names clear and consistent.",
-  "version": "1.0.0",
   "author": {
     "name": "Johannes Marcin",
     "url": "https://github.com/codingjoe"
