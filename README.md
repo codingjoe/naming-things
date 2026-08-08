@@ -45,7 +45,7 @@ description: Naming conventions for classes, functions, variables, unit tests, t
 >
 > — Phil Karlton
 
-This document concerns natural language conventions, not syntax or code style. Rules are language-agnostic, but examples are given in Python.
+These are natural-language conventions, not syntax or code style. Rules are language-agnostic, but examples are in Python.
 
 [![Permanence
 ](https://imgs.xkcd.com/comics/permanence.png)](https://xkcd.com/910/)
@@ -54,14 +54,11 @@ This document concerns natural language conventions, not syntax or code style. R
 
 ### Classes
 
-Class names are nouns or noun phrases. Think German compound nouns. E.g., `UserProfile`, `OrderItem`, `PaymentProcessor`.
-
-Class names are singular because while its instances may represent multiple entities (e.g., a `User` class representing multiple user instances), the class itself is a blueprint for a single entity.
+Class names are singular nouns or noun phrases, like German compound nouns: `UserProfile`, `OrderItem`, `PaymentProcessor`. While a class's instances may represent multiple entities, the class itself is a blueprint for a single entity.
 
 #### Inheritance
 
-Specialize, don't generalize. If you feel the urge to name a base class `BaseSomething` or `AbstractSomething`, go the other way.
-Make children more specific, not parents more general.
+Specialize, do not generalize. If you want to name a class `BaseSomething` or `AbstractSomething`, go the other way: make children more specific, not parents more general.
 
 ##### Do's
 
@@ -91,26 +88,28 @@ class SportsCar(BaseCar):
 
 ### Functions
 
-Function represents an action a caller can perform. Use verbs or verb phrases. E.g., `send()`, `calculate_total()`.
+A function is an action a caller performs. Name it with a verb or verb phrase: `send()`, `calculate_total()`. Function names must state external behavior, including side effects (`fetch_or_404()` raises a 404). They must not expose internals: avoid `send_via_smtp()`, use `send()`.
 
-Function names must clearly communicate their external behavior, including side effects. E.g., `fetch_or_404()` makes it explicit that it may raise a 404 error.
-They must not expose internal implementation details. E.g., avoid `send_via_smtp()`; use `send()` instead.
-
-Loose functions should be the exception, not the rule. Prefer class methods or instance methods to group related functionality. If a function includes a noun in its name, it probably belongs to that noun's class. E.g., instead of `fetch_user_profile(user_id)`, implement `UserProfile.fetch(user_id)`.
+Prefer class or instance methods over standalone functions. If a function name includes a noun, it belongs on that noun's class: `UserProfile.fetch(user_id)`, not `fetch_user_profile(user_id)`.
 
 ### Methods
 
-Avoid including object names, as the method is probably attached to the wrong class. E.g., instead of `user.send_email()`, use `UserEmail(user).send()`.
+Avoid object names in method names. The method is probably on the wrong class. Use `UserEmail(user).send()`, not `user.send_email()`.
 
 ### Variables
 
-Avoid assigning variables that are only used once. If a value is asserted immediately or returned in the next line without further access, use it inline.
+Avoid variables used only once. If a value is asserted or returned immediately, use it inline.
 
 ## Unit Tests
 
-Unit tests should match their API counterparts to be easily navigable and discoverable. A simple text search for a function or class must reveal both its implementation and tests quickly.
+Unit tests mirror their API counterparts so a simple text search reveals both the implementation and its tests.
 
-Test names use double underscores to separate the function or class name from the scenario (e.g., `test_get_user__ok`, `test_get_user__raise_value_error`). Test classes are prefixed with `Test` in Python or wrapped in `describe` blocks in JavaScript. Test descriptions must use imperative mood and avoid redundant words like "should", "expect", or "it". Assertion messages must add meaningful context beyond the assertion itself or be omitted. In Node.js, use strict assertions by default with `import assert from "node:assert/strict"` for shorter function names and stricter equality checks.
+Test names use double underscores to separate the function or class name from the scenario (for example, `test_get_user__ok`, `test_get_user__raise_value_error`).
+
+- Test classes are prefixed with `Test` in Python or wrapped in `describe` blocks in JavaScript.
+- Test descriptions use the imperative mood and avoid redundant words such as "should", "expect", or "it".
+- Assertion messages add meaningful context beyond the assertion itself, or are omitted.
+- In Node.js, use strict assertions by default with `import assert from "node:assert/strict"` for shorter function names and stricter equality checks.
 
 ### Do's
 
@@ -185,17 +184,15 @@ assert.equal(user.name, "Alice", "user.name should equal Alice"); // repeats ass
 
 ## Time
 
-_[Time zones are hard](https://www.youtube.com/watch?v=-5wpm-gesOY); don't make it harder._
+_[Time zones are hard](https://www.youtube.com/watch?v=-5wpm-gesOY); do not make it harder._
 
 ### Events & Points in Time
 
-Points in time should always have a little `at`-suffix to communicate they represent a specific moment rather than a duration or interval.
+Points in time carry an `at` suffix to mark a specific moment, not a duration or interval. They must use the language's date type (`datetime` in Python, `Date` in JavaScript) and be timezone-aware.
 
-Furthermore, they must be in the language's date type (e.g., `datetime` in Python, `Date` in JavaScript) as well as timezone-aware.
+Name dates in the past tense (`created_at`, `updated_at`, `deleted_at`), even future events (`scheduled_at`, `expired_at`). Time passes; everything is in the past by the time you debug.
 
-Hindsight is 20/20; name all dates in the past tense, e.g., `created_at`, `updated_at`, `deleted_at`. Even if the event is in the future, e.g., `scheduled_at`, `expired_at`, `started_at`. Time passes. By the time you are debugging code, everything is in the past.
-
-Avoid locale-specific string representations or include a timezone suffix. Suffix dates according to their [IANA timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+Avoid locale-specific strings. If you must use a string, include a timezone suffix. Suffix dates according to their [IANA timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
 #### Do's
 
@@ -232,7 +229,7 @@ created_at: datetime.datetime = datetime.datetime.now()
 
 ### Durations and intervals
 
-Durations should be either unambiguously typed (e.g., `timedelta` in Python, `Duration` in Java) or have a suffix indicating the unit of time (e.g., `secs`, `ms`, `mins`, `hours`, `days`).
+Durations are either unambiguously typed (`timedelta` in Python, `Duration` in Java) or carry a unit suffix (`secs`, `ms`, `mins`, `hours`, `days`).
 
 #### Do's
 
@@ -261,9 +258,7 @@ timeout: int = 30
 
 [![Nomenclature](https://imgs.xkcd.com/comics/nomenclature.png)](https://xkcd.com/1221/)
 
-**Don't use abbreviations!**
-
-Unless… they are technical acronyms that are universally known outside your team's domain, e.g., `HTML`, `URL`. Use them if they are more common than their unabbreviated counterparts.
+**Do not use abbreviations!** Unless they are technical acronyms universally known outside your team's domain (`HTML`, `URL`). Use them only when more common than the full term.
 
 ### Do's
 
@@ -315,9 +310,7 @@ Unless… they are technical acronyms that are universally known outside your te
 
 ### Units
 
-Add an explicit unit suffix to all measurements. Use [SI unit symbols](https://en.wikipedia.org/wiki/International_System_of_Units#Unit_symbols) for brevity.
-
-When persisting metrics, consider using SI (metric) units instead of [freedom units](https://en.wiktionary.org/wiki/freedom_units), as they are the international standard and simplify conversions.
+Add an explicit unit suffix to all measurements, using [SI unit symbols](https://en.wikipedia.org/wiki/International_System_of_Units#Unit_symbols) for brevity. For persisted metrics, prefer SI (metric) units over [freedom units](https://en.wiktionary.org/wiki/freedom_units). They are the international standard and simplify conversions.
 
 #### Do's
 
@@ -343,7 +336,7 @@ class WeatherReport:
 
 ### Sizes
 
-Always be explicit about sizes. Size matters! Do you know the size of a BIGINT or a SMALLINT in your database of choice?
+Be explicit about sizes. Do you know the size of a BIGINT or SMALLINT in your database?
 
 #### Do's
 
@@ -374,18 +367,17 @@ class Profile:
 >
 > A German term for a place where leftover goods are collected and sold cheaply.
 
-Avoid generic names like `utils`, `helpers`, `common`, `shared`, `lib`, `core`, `base`, `foundation`, `services`, `components`, etc.
+Avoid generic module names: `utils`, `helpers`, `common`, `shared`, `lib`, `core`, `base`, `foundation`, `services`, `components`.
 
-For type-agnostic functions, use inheritance and class methods to group them meaningfully.
-E.g., instead of a `utils` module with a function `to_json(obj)`, create a `Object.to_json(self)` method on relevant classes.
+For type-agnostic functions, group them with class methods. Put `to_json()` on relevant classes instead of a `utils` module.
 
-If there isn't a type yet, create one. E.g., instead of a `helpers` module with a function `send_email(to, subject, body)`, create an `EmailClient` class with a `send_email(self, to, subject, body)` method.
+If no type exists, create one: make an `EmailClient` with a `send_email()` method instead of a `helpers` module.
 
 ## Synonyms
 
-Avoid synonyms to reduce cognitive load. Pick one term and stick with it throughout your codebase.
+Pick one term per concept and use it throughout your codebase to reduce cognitive load.
 
-Here's a non-exhaustive list of common synonyms and their preferred alternatives:
+Here is a non-exhaustive list of common synonyms and their preferred alternatives:
 
 | Avoid                          | Prefer    |
 | ------------------------------ | --------- |
@@ -406,9 +398,9 @@ Here's a non-exhaustive list of common synonyms and their preferred alternatives
 | stop/end/terminate             | stop      |
 | many/multiple/numerous/several | multiple  |
 
-Be specific and avoid vague terms. E.g., instead of `number`, use `count`, `index`, `mean`, etc.
+Be specific and avoid vague terms. For example, instead of `number`, use `count`, `index`, or `mean`.
 
-Here's a non-exhaustive list of ambiguous terms and their preferred alternatives:
+Here is a non-exhaustive list of ambiguous terms and their preferred alternatives:
 
 | Avoid   | Prefer            |
 | ------- | ----------------- |
@@ -418,7 +410,7 @@ Here's a non-exhaustive list of ambiguous terms and their preferred alternatives
 
 ### Exceptions
 
-Some terms have contextual meanings and should be used explicitly in those contexts.
+Some terms have contextual meanings and are used explicitly in those contexts.
 
 #### Get vs. Fetch vs. Search
 
@@ -429,12 +421,11 @@ Some terms have contextual meanings and should be used explicitly in those conte
 #### Set vs. Send
 
 - **Set**: Use for assigning values to variables, properties, or configurations.
-- **Send**: Use for transmitting data or messages over a network or between components. If HTTP is involved, always use the correct request method (e.g., `post()`, `put()`).
+- **Send**: Use for transmitting data or messages over a network or between components. If HTTP is involved, always use the correct request method (for example, `post()`, `put()`).
 
 ## Avoid Negations
 
-Use positive language to avoid double negations and improve readability.
-E.g., `if (is_enabled)` is clearer than `if (!is_disabled)`.
+Use positive language. `if (is_enabled)` is clearer than `if (!is_disabled)`.
 
 ### Do's
 
@@ -473,15 +464,13 @@ if not is_disabled:  # hard to parse
 | denied         | granted   |
 
 > [!NOTE]
-> Use negative terms when they're the standard (e.g., `disabled` for HTMLInputElements) or inherently negative (e.g., `error`, `exception`).
+> Use negative terms when they are the standard (for example, `disabled` for HTMLInputElements) or inherently negative (for example, `error`, `exception`).
 
 ## Versioning
 
-It's simple: if your project does continuous releases, use [Semantic Versioning](https://semver.org/).
-If you are on a fixed release cycle, use [calver](https://calver.org/) `YYYY.MINOR.MICRO`
-. E.g., `2024.2.3` for the third patch of the second minor release in 2024.
+Continuous releases: use [Semantic Versioning](https://semver.org/). Fixed release cycle: use [calver](https://calver.org/) `YYYY.MINOR.MICRO` (`2024.2.3` is the third patch of the second minor release of 2024).
 
-Here's a diagram to help you decide:
+Here is a diagram to help you decide:
 
 ```mermaid
 flowchart TD
