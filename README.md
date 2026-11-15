@@ -86,11 +86,45 @@ class SportsCar(BaseCar):
     """Only fun in Germany."""
 ```
 
+### Class Nesting
+
+Do not leave constants, functions, or attributes dangling at module level. A prefixed name is a class in disguise. Move the prefix into the class. If a function name includes a noun, it belongs on that noun's class: `UserProfile.fetch(user_id)`, not `fetch_user_profile(user_id)`.
+
+```python
+# Don't
+SERVER_HOST = "localhost"
+SERVER_PORT = 8000
+
+
+def start_server(): ...
+
+
+# Do
+class Server:
+    HOST = "localhost"
+    PORT = 8000
+
+    @classmethod
+    def start(cls): ...
+```
+
+The same applies to data. Use `server.host`, not a dangling `server_host` variable.
+
+### Casing
+
+Class attributes are always uppercase. Instance attributes are always lowercase. Functions are always lowercase, including class and static methods. Decorators such as `@classmethod` and `@staticmethod` already identify methods, so their names do not need to change case.
+
+```python
+class Server:
+    DEFAULT_PORT = 8000
+
+    def __init__(self, address: str):
+        self.hostname = address
+```
+
 ### Functions
 
 A function is an action a caller performs. Name it with a verb or verb phrase: `send()`, `calculate_total()`. Function names must state external behavior, including side effects (`fetch_or_404()` raises a 404). They must not expose internals: avoid `send_via_smtp()`, use `send()`.
-
-Prefer class or instance methods over standalone functions. If a function name includes a noun, it belongs on that noun's class: `UserProfile.fetch(user_id)`, not `fetch_user_profile(user_id)`.
 
 ### Methods
 
